@@ -63,3 +63,6 @@ typings/
 
 # next.js build output
 .next
+
+# 忽略打包文件
+*.vsix
