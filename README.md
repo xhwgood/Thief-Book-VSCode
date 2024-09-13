@@ -10,7 +10,7 @@
 
 ## PC版本
 
-更加隐蔽功能更加丰富：https://github.com/cteams/Thief-Book
+更加隐蔽功能更加丰富：https://github.com/xhwgood/Thief-Book-VSCode
 
 ## 默认配置
 
@@ -68,7 +68,7 @@ A fishing and reading magic weapon
 
 ## PC
 
-https://github.com/cteams/Thief-Book
+https://github.com/xhwgood/Thief-Book-VSCode
 
 ## Default configuration
 
