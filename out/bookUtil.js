@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Book = void 0;
 const vscode_1 = require("vscode");
 const fs = require("fs");
 class Book {
@@ -10,10 +11,13 @@ class Book {
         this.start = 0;
         this.end = this.page_size;
         this.filePath = "";
+        this.currFilePath = "";
+        this.text = "";
+        this.textSize = 0;
         this.extensionContext = extensionContext;
     }
     getSize(text) {
-        let size = text.length;
+        let size = this.textSize;
         this.page = Math.ceil(size / this.page_size);
     }
     getFileName() {
@@ -79,10 +83,20 @@ class Book {
     readFile() {
         if (this.filePath === "" || typeof (this.filePath) === "undefined") {
             vscode_1.window.showWarningMessage("请填写TXT格式的小说文件路径 & Please fill in the path of the TXT format novel file");
+            this.text = "";
+            this.currFilePath = "";
+            this.textSize = 0;
         }
-        var data = fs.readFileSync(this.filePath, 'utf-8');
-        var line_break = vscode_1.workspace.getConfiguration().get('thiefBook.lineBreak');
-        return data.toString().replace(/\n/g, line_break).replace(/\r/g, " ").replace(/　　/g, " ").replace(/ /g, " ");
+        else {
+            if (this.currFilePath != this.filePath) {
+                this.currFilePath = this.filePath;
+                var data = fs.readFileSync(this.filePath, 'utf-8');
+                var line_break = vscode_1.workspace.getConfiguration().get('thiefBook.lineBreak');
+                this.text = data.toString().replace(/\n/g, line_break).replace(/\r/g, " ").replace(/　　/g, " ").replace(/ /g, " ");
+                this.textSize = this.text.length;
+            }
+        }
+        return this.text;
     }
     init() {
         this.filePath = vscode_1.workspace.getConfiguration().get('thiefBook.filePath');
