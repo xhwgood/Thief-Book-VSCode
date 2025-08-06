@@ -1,5 +1,7 @@
 # Thief Book
 
+## 本插件将不再更新，推荐使用 [any-reader](https://github.com/aooiuu/any-reader) 完全免费，功能强大
+
 一个摸鱼看书神器
 
 ![](./images/1.png)
